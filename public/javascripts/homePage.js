@@ -2,15 +2,20 @@ function getRandomInRange(from, to, fixed) {
   return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
 }
 
-$(document).ready(function () {
-  if (!localStorage.getItem("token")) {
-    window.location.href = "/landing";
-  }
+if (
+  !localStorage.getItem("token") ||
+  localStorage.getItem("token") === "undefined"
+) {
+  window.location.href = "/landing?isLogin=true";
+}
 
+let circle;
+
+$(document).ready(function () {
   let randomLat = getRandomInRange(-90, 90, 3);
   let randomLong = getRandomInRange(-180, 180, 3);
   const map = L.map("map");
-  map.setView([randomLat, randomLong], 10);
+  map.setView([randomLat, randomLong], 5);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -25,6 +30,7 @@ $(document).ready(function () {
     const formData = new FormData(event.target);
     const plainFormData = Object.fromEntries(formData.entries());
     const ipToFetch = plainFormData.ip;
+
     let fetchIp;
     if (ipToFetch) {
       fetchIp = fetch(`/api/v1/ip/${ipToFetch}`, {
@@ -51,7 +57,10 @@ $(document).ready(function () {
           tileSize: 512,
           zoomOffset: -1,
         }).addTo(map);
-        const circle = L.circle([data.latitude, data.longitude], {
+        if (circle) {
+          circle.remove();
+        }
+        circle = L.circle([data.latitude, data.longitude], {
           color: "red",
           fillColor: "#f03",
           fillOpacity: 0.5,
