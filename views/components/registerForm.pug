@@ -1,0 +1,33 @@
+// Registeration Form
+div
+  form#reg-form
+    .row
+      // First Name
+      .input-group.mb-3
+        span.input-group-text.input-group-text-custom
+          i.fa.fa-user.text-muted
+        input#username.form-control(type='text' name='username' placeholder='Username')
+      // Email Address
+      .input-group.mb-3
+        span.input-group-text.input-group-text-custom
+          i.fa.fa-envelope.text-muted
+        input#email.form-control(type='email' name='email' placeholder='Email Address')
+      // Password
+      .input-group.mb-3
+        span.input-group-text.input-group-text-custom
+          i.fa.fa-lock.text-muted
+        input#password.form-control(type='password' name='password' placeholder='Password')
+      // Password Confirmation
+      .input-group.mb-3
+        span.input-group-text.input-group-text-custom
+          i.fa.fa-lock.text-muted
+        input#passwordConfirmation.form-control(type='text' name='passwordConfirmation' placeholder='Confirm Password')
+      // Submit Button
+      .text-center.mb-3
+        button.btn.btn-primary.btn-block.py-2(type='submit') 
+          | Create your account
+      // Already Registered
+      .text-center.w-100
+        p.text-muted.font-weight-bold
+          | Already Registered? 
+          a.text-primary.ml-2(href='/landing?isLogin=true') Login

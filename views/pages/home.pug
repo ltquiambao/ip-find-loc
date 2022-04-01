@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  nav.navbar.navbar-light.bg-light
+    .container
+      a.navbar-brand(href='/')
+        i.fa.fa-map-marker
+        |  IP Geolocation 
+  .container.mt-3
+    include ../components/ipFindForm.pug
+    include ../components/map.pug
+  script(src="/javascripts/homePage.js")

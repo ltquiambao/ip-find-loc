@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+  .container.page
+    include ../components/landingText.pug
+    if isLogin
+      include ../components/loginForm.pug
+    else 
+      include ../components/registerForm.pug
+  script(src="/javascripts/landingPage.js")

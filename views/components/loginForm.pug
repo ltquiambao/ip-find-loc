@@ -1,0 +1,23 @@
+// Login Form
+div
+  form#login-form
+    .row
+      // Email Address
+      .input-group.mb-3
+        span.input-group-text.input-group-text-custom
+          i.fa.fa-envelope.text-muted
+        input#email.form-control(type='email' name='email' placeholder='Email Address')
+      // Password
+      .input-group.mb-3
+        span.input-group-text.input-group-text-custom
+          i.fa.fa-lock.text-muted
+        input#password.form-control(type='password' name='password' placeholder='Password')
+      // Submit Button
+      .text-center.mb-3
+        button.btn.btn-primary.btn-block.py-2(type='submit') 
+          | Login
+      // New user
+      .text-center.w-100
+        p.text-muted.font-weight-bold
+          | New user? 
+          a.text-primary.ml-2(href='/landing') Register
